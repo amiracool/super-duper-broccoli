@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Genogram Tool</title>
+  <style>
+    #container {
+      width: 1000px;
+      height: 600px;
+      margin: 20px auto;
+      border: 1px solid black;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Simple Genogram Painter</h1>
+  <div class="controls">
+    <button id="add-circle">Add Circle (Female)</button>
+    <button id="add-square">Add Square (Male)</button>
+    <button id="add-diamond">Add Diamond (Unknown)</button>
+    <button id="add-line">Add Line</button>
+    <button id="cross-out">Cross Out</button>
+  </div>
+  <div id="container"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/konva/8.4.2/konva.min.js"></script>
+  <script src="genogram2.0.js"></script>
+</body>
+</html>

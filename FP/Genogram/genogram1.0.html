@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Genogram Tool</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+      display: block;
+      margin: 20px auto;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Interactive Genogram Tool</h1>
+  <div class="controls">
+    <label>Name: <input type="text" id="name"></label>
+    <label>Age: <input type="number" id="age"></label>
+    <label>Health Conditions: <input type="text" id="health"></label>
+    <label>Deceased: <input type="checkbox" id="deceased"></label>
+    <label>Gender:
+      <select id="gender">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="O">Other</option>
+      </select>
+    </label>
+    <button id="add-node">Add Member</button>
+  </div>
+
+  <div>
+    <label for="relationshipType">Relationship Type:</label>
+    <select id="relationshipType">
+      <option value="solid">Solid Line</option>
+      <option value="dashed">Dashed Line</option>
+      <option value="zigzag">Zigzag Line</option>
+    </select>
+  </div>
+  
+
+  <canvas id="genogramCanvas" width="1000" height="600"></canvas>
+  <button id="export">Export as Image</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/konva/8.4.2/konva.min.js"></script>
+
+  <script src="genogram1.0.js"></script>
+</body>
+</html>

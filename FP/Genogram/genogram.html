@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genogram Builder</title>
+  <style>
+    canvas {
+      border: 1px solid black;
+    }
+    .controls {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Genogram Builder</h1>
+  <div class="controls">
+    <label>Name: <input type="text" id="name"></label>
+    <label>Gender: 
+      <select id="gender">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+      </select>
+    </label>
+    <button id="add-node">Add Member</button>
+  </div>
+  <canvas id="genogramCanvas" width="800" height="600"></canvas>
+  <button id="export">Export as Image</button>
+
+  <script src="genogram.js"></script>
+</body>
+</html>
