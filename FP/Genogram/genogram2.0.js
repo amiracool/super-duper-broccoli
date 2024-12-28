@@ -149,4 +149,66 @@ const stage = new Konva.Stage({
   document.getElementById('cross-out').addEventListener('click', () => {
     currentMode = 'cross-out';
   });
+  function addLine() {
+    // Create the visible line
+    const line = new Konva.Line({
+      points: [100, 100, 300, 300], // Starting points
+      stroke: 'black',
+      strokeWidth: 2,
+    });
+  
+    // Add an invisible hit area for easier selection
+    const hitArea = new Konva.Line({
+      points: [100, 100, 300, 300],
+      stroke: 'transparent',
+      strokeWidth: 10, // Larger hit area
+    });
+  
+    // Wrap the line and hit area in a group
+    const group = new Konva.Group({
+      draggable: true,
+    });
+    group.add(hitArea);
+    group.add(line);
+  
+    // Add transformer for rotation and resizing
+    const transformer = new Konva.Transformer({
+      nodes: [group],
+      enabledAnchors: ['middle-left', 'middle-right'], // Anchors for resizing
+      rotateEnabled: true, // Allow rotation
+    });
+  
+    layer.add(transformer);
+  
+    // Add group to layer
+    layer.add(group);
+    layer.draw();
+  
+    // Update transformer on click
+    group.on('click', () => {
+      transformer.nodes([group]);
+      layer.draw();
+    });
+  
+    // Add hover effect to the line for better UX
+    group.on('mouseover', () => {
+      document.body.style.cursor = 'pointer'; // Change cursor to indicate interactivity
+      line.strokeWidth(4); // Highlight the line
+      layer.draw();
+    });
+  
+    group.on('mouseout', () => {
+      document.body.style.cursor = 'default'; // Revert cursor
+      line.strokeWidth(2); // Reset line thickness
+      layer.draw();
+    });
+  
+    // Deselect transformer when clicking outside
+    stage.on('click', (e) => {
+      if (e.target === stage) {
+        transformer.nodes([]);
+        layer.draw();
+      }
+    });
+  }
   
